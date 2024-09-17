@@ -2,10 +2,12 @@
   "name": "ts-node",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "nodemon src/index.ts"
+    "watch": "nodemon src/index.ts",
+    "start": "node out/index.js",
+    "build": "tsc"
   },
   "author": "JAYANT KUMAR",
   "license": "MIT",
