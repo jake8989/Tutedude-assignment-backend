@@ -28,11 +28,11 @@ router.post(
       return res.status(400).json({ message: 'Cannot Perform This Action' });
     }
 
-    const existFriends = Friend.findOne({
+    const existFriends = await Friend.findOne({
       user1: sender_id,
       user2: receiver_id,
     });
-    const ef1 = Friend.findOne({
+    const ef1 = await Friend.findOne({
       user1: receiver_id,
       user2: sender_id,
     });
