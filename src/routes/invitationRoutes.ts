@@ -27,15 +27,18 @@ router.post(
     if (sender_id === receiver_id) {
       return res.status(400).json({ message: 'Cannot Perform This Action' });
     }
+
     const existFriends = Friend.findOne({
       sender_id: sender_id,
       receiver_id: receiver_id,
     });
-    // const ef1 = Friend.findOne({
-    // 	sender_id: receiver_id,
-    // 	receiver_id: sender_id,
-    // });
-
+    const ef1 = Friend.findOne({
+      sender_id: receiver_id,
+      receiver_id: sender_id,
+    });
+    if (existFriends || ef1) {
+      return res.status(500).json({ message: 'Users are already friends!' });
+    }
     const existInvitation = await Inviation.findOne({
       sender: sender_id,
       receiver: receiver_id,
