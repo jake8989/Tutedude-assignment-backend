@@ -29,12 +29,12 @@ router.post(
     }
 
     const existFriends = Friend.findOne({
-      sender_id: sender_id,
-      receiver_id: receiver_id,
+      user1: sender_id,
+      user2: receiver_id,
     });
     const ef1 = Friend.findOne({
-      sender_id: receiver_id,
-      receiver_id: sender_id,
+      user1: receiver_id,
+      user2: sender_id,
     });
     if (existFriends || ef1) {
       return res.status(500).json({ message: 'Users are already friends!' });
